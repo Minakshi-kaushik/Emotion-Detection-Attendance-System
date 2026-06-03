@@ -1,0 +1,35 @@
+venv/
+__pycache__/
+.ipynb_checkpoints/
+
+
+students/
+*.pyc
+*.pyo
+
+attendance.csv
+
+# Large model files (optional)
+*.h5
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Datasets
+archive/
+attendance_system/students/
+
+# Models
+*.h5
+
+# Temporary files
+tempCodeRunnerFile.py
+attendance.csv
