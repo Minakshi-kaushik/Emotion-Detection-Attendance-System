@@ -1,0 +1,14 @@
+EMOTION-AWARE ATTENDANCE REPORT
+========================================
+
+Total Records: 5
+Registered Students: 5
+Present Today: 0
+Attendance Percentage: 0.00%
+
+Emotion Distribution
+-------------------------
+Happy: 2
+Neutral: 1
+Sad: 1
+Surprise: 1

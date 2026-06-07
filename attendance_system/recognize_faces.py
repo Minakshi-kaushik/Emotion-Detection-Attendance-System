@@ -1,8 +1,12 @@
 import cv2
 import os
 import numpy as np
+from datetime import datetime
 
-from csv_logger import mark_attendance
+from csv_logger import (
+    mark_attendance,
+    mark_absent,
+)
 
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import (
@@ -118,12 +122,33 @@ EMOTIONS_LIST = [
     "Surprise",
 ]
 
+
+# ==========================
+# ATTENDANCE TIME CHECK
+# ==========================
+
+now = datetime.now()
+
+current_time = now.strftime("%H:%M")
+
+if current_time < "09:30" or current_time > "10:00":
+    print("Attendance system can only run between 09:30 AM and 10:00 AM")
+    exit()
+
 # ==========================
 # START CAMERA
 # ==========================
+
 cap = cv2.VideoCapture(0)
 
 recognized_today = set()
+
+all_students = [
+    "Minakshi",
+    "Student1",
+    "Student2",
+    "Student3",
+]
 
 print("Emotion-Aware Attendance System Started")
 print("Press 'Q' to quit")
@@ -214,5 +239,19 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
+
+# ==========================
+# MARK ABSENT STUDENTS
+# ==========================
+
+for student in all_students:
+    if student not in recognized_today:
+        mark_absent(student)
+
+# ==========================
+# CLEANUP
+# ==========================
+
 cap.release()
+
 cv2.destroyAllWindows()

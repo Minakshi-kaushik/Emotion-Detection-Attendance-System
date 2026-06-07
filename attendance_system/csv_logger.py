@@ -47,6 +47,38 @@ def mark_attendance(name, emotion):
     print(f"Attendance marked for {name} with emotion: {emotion}")
 
 
+def mark_absent(name):
+
+    create_attendance_file()
+
+    now = datetime.now()
+
+    current_date = now.strftime("%Y-%m-%d")
+
+    df = pd.read_csv(CSV_FILE)
+
+    already_exists = ((df["Name"] == name) & (df["Date"] == current_date)).any()
+
+    if already_exists:
+        return
+
+    new_record = pd.DataFrame(
+        {
+            "Name": [name],
+            "Date": [current_date],
+            "Time": ["N/A"],
+            "Emotion": ["N/A"],
+            "Status": ["Absent"],
+        }
+    )
+
+    df = pd.concat([df, new_record], ignore_index=True)
+
+    df.to_csv(CSV_FILE, index=False)
+
+    print(f"{name} marked absent.")
+
+
 if __name__ == "__main__":
     mark_attendance("Minakshi", "Happy")
     mark_attendance("Student1", "Neutral")
