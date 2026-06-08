@@ -33,3 +33,8 @@ attendance_system/students/
 # Temporary files
 tempCodeRunnerFile.py
 attendance.csv
+
+attendance_system/students/
+attendance_system/trainer.yml
+attendance_system/attendance.csv
+attendance_system/labels.txt
